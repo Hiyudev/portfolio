@@ -1,13 +1,27 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import { useRef } from 'react';
 import { ProjectCard } from '../components/common/card/ProjectCard';
 import { HeadlineComponent } from '../components/common/Headline';
 import { Header } from '../components/section/Header';
 import { Navbar } from '../components/section/Navbar';
 import { TableOfContent } from '../components/section/TableOfContent';
+import { getProjectsQuery } from '../graphql/getProjects';
 import { useHasPassed } from '../hooks/useHasPassed';
+import { client } from '../lib/GraphQLClient';
 
-const HomePage: NextPage = () => {
+type Project = {
+  title: string;
+  description: string;
+  techStack: string[];
+  githubLink?: string;
+  projectLink?: string;
+};
+
+type HomePageProps = {
+  projects: Project[];
+};
+
+const HomePage: NextPage = ({ projects }: HomePageProps) => {
   const blogHeadline = useRef(null);
   const hasBlogHeadlinePassed = useHasPassed(blogHeadline);
 
@@ -33,15 +47,14 @@ const HomePage: NextPage = () => {
           Projects
         </HeadlineComponent>
         <ul className="flex flex-col gap-4">
-          {Array(5)
-            .fill(0)
-            .map((_, index) => {
+          {projects &&
+            projects.map(({ title, description, techStack }, index) => {
               return (
                 <ProjectCard
                   key={index}
-                  tags={['React', 'Next.js', 'TypeScript']}
-                  title="Project"
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl."
+                  tags={techStack}
+                  title={title}
+                  description={description}
                 />
               );
             })}
@@ -74,3 +87,15 @@ const HomePage: NextPage = () => {
 };
 
 export default HomePage;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { projects }: { projects: Project[] } = await client.request(
+    getProjectsQuery
+  );
+
+  return {
+    props: {
+      projects,
+    },
+  };
+};
