@@ -13,7 +13,7 @@ const HomePage: NextPage = () => {
 
   return (
     <div className="flex min-h-screen flex-col gap-16 bg-zinc-900 p-8 text-white md:grid md:grid-cols-2 md:gap-8">
-      <div className="flex w-full flex-col justify-center gap-4 md:fixed md:h-[90vh] md:w-5/12">
+      <div className="flex w-full flex-col justify-around gap-4 md:fixed md:h-[90vh] md:w-5/12">
         <Header />
 
         <nav>
