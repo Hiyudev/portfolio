@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { TextComponent } from '../common/Text';
 
 interface Title {
@@ -14,22 +14,26 @@ type TableOfContentProps = {
 };
 
 export function TableOfContent({ titles }: TableOfContentProps) {
-  useEffect(() => {
-    const reverseTitles = [...titles].reverse();
+  const [tableTitles, setTableTitles] = useState<Title[]>();
 
-    for (let title of reverseTitles) {
+  useEffect(() => {
+    const reversedTitles = [...titles].reverse();
+
+    for (let title of reversedTitles) {
       if (title.hasPassed) {
         const currentTitle = titles.find((t) => t.id === title.id);
         currentTitle.active = true;
         break;
       }
     }
+
+    setTableTitles([...titles]);
   }, [titles]);
 
   return (
     <ul className="flex flex-col gap-4">
-      {titles &&
-        titles.map(({ id, title, active }) => {
+      {tableTitles &&
+        tableTitles.map(({ id, title, active }) => {
           return (
             <li key={id}>
               <TextComponent weight={active ? 1 : 2} asChild>
