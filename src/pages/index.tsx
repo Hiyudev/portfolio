@@ -4,7 +4,7 @@ import { ProjectCard } from '../components/common/card/ProjectCard';
 import { HeadlineComponent } from '../components/common/Headline';
 import { Header } from '../components/section/Header';
 import { Navbar } from '../components/section/Navbar';
-import { TableOfContent } from '../components/section/TableOfConcent';
+import { TableOfContent } from '../components/section/TableOfContent';
 import { useHasPassed } from '../hooks/useHasPassed';
 
 const HomePage: NextPage = () => {
