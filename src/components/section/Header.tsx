@@ -2,18 +2,23 @@ import { HeadlineComponent } from '../common/Headline';
 import { TextComponent } from '../common/Text';
 import { LogoIcon } from '../icons/LogoIcon';
 
-export function Header() {
+type HeaderProps = {
+  position: string;
+  description: string;
+};
+
+export function Header({ position, description }: HeaderProps) {
   return (
     <header className="flex flex-col gap-4">
       <div className="h-12 w-12">
         <LogoIcon />
       </div>
       <HeadlineComponent weight={1}>Kevin Hirade</HeadlineComponent>
-      <HeadlineComponent weight={2}>Desenvolvedor no NÓS</HeadlineComponent>
-      <TextComponent weight={2}>
-        Desenvolvedor entusiasta apaixonado pelo mundo tecnológico. Crio e
-        desenho programas rápidos e acessíveis para tornar sua ideia um produto
-        do mundo real.
+      <HeadlineComponent weight={2}>
+        <div dangerouslySetInnerHTML={{ __html: position }}></div>
+      </HeadlineComponent>
+      <TextComponent asChild weight={2}>
+        <div dangerouslySetInnerHTML={{ __html: description }}></div>
       </TextComponent>
     </header>
   );
