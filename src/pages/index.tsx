@@ -12,7 +12,7 @@ import { client } from '../lib/GraphQLClient';
 type Project = {
   title: string;
   description: string;
-  techStack: string[];
+  tags: string[];
   githubLink?: string;
   projectLink?: string;
 };
@@ -48,7 +48,7 @@ const HomePage: NextPage = ({ projects }: HomePageProps) => {
         </HeadlineComponent>
         <ul className="flex flex-col gap-4">
           {projects &&
-            projects.map(({ title, description, techStack }, index) => {
+            projects.map(({ title, description, tags: techStack }, index) => {
               return (
                 <ProjectCard
                   key={index}
