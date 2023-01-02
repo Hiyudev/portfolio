@@ -1,17 +1,14 @@
-import classNames from 'classnames';
 import type { NextPage } from 'next';
-import Link from 'next/link';
 import { useRef } from 'react';
 import { ProjectCard } from '../components/common/card/ProjectCard';
 import { HeadlineComponent } from '../components/common/Headline';
 import { Header } from '../components/section/Header';
 import { Navbar } from '../components/section/Navbar';
+import { TableOfContent } from '../components/section/TableOfConcent';
 import { useHasPassed } from '../hooks/useHasPassed';
 
 const HomePage: NextPage = () => {
-  const projectHeadline = useRef(null);
   const blogHeadline = useRef(null);
-  const hasProjectHeadlinePassed = useHasPassed(projectHeadline);
   const hasBlogHeadlinePassed = useHasPassed(blogHeadline);
 
   return (
@@ -20,36 +17,19 @@ const HomePage: NextPage = () => {
         <Header />
 
         <nav>
-          <ul className="flex flex-col gap-4">
-            <li
-              className={classNames({
-                'text-zinc-100': hasProjectHeadlinePassed,
-                'text-zinc-500': !hasProjectHeadlinePassed,
-              })}
-            >
-              <Link href={'#projects'}>Projects</Link>
-            </li>
-            <li
-              className={classNames({
-                'text-zinc-100': hasBlogHeadlinePassed,
-                'text-zinc-500': !hasBlogHeadlinePassed,
-              })}
-            >
-              <Link href={'#posts'}>Blog posts</Link>
-            </li>
-          </ul>
+          <TableOfContent
+            titles={[
+              { id: 'projects', title: 'Projects', hasPassed: true },
+              { id: 'posts', title: 'Posts', hasPassed: hasBlogHeadlinePassed },
+            ]}
+          />
         </nav>
 
         <Navbar />
       </div>
 
       <div className="col-start-2">
-        <HeadlineComponent
-          className="mb-4"
-          id="projects"
-          weight={3}
-          ref={projectHeadline}
-        >
+        <HeadlineComponent className="mb-4" id="projects" weight={3}>
           Projects
         </HeadlineComponent>
         <ul className="flex flex-col gap-4">
