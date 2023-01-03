@@ -62,16 +62,23 @@ const HomePage: NextPage = ({
         </HeadlineComponent>
         <ul aria-label="Projects list" className="flex flex-col gap-4">
           {projects &&
-            projects.map(({ title, description, tags: techStack }, index) => {
-              return (
-                <ProjectCard
-                  key={index}
-                  tags={techStack}
-                  title={title}
-                  description={description}
-                />
-              );
-            })}
+            projects.map(
+              (
+                { title, description, tags, projectLink, githubLink },
+                index
+              ) => {
+                return (
+                  <ProjectCard
+                    key={index}
+                    tags={tags}
+                    title={title}
+                    description={description}
+                    projectLink={projectLink}
+                    githubLink={githubLink}
+                  />
+                );
+              }
+            )}
         </ul>
         <HeadlineComponent
           className="mt-8 mb-8"
