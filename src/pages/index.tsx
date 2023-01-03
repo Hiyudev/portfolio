@@ -19,8 +19,14 @@ type Project = {
 };
 
 type HomePageProps = {
-  position: string;
-  description: string;
+  position: {
+    html: string;
+    text: string;
+  };
+  description: {
+    html: string;
+    text: string;
+  };
   projects: Project[];
 };
 
@@ -105,24 +111,44 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const {
     section: {
-      content: { html: position },
+      content: { html: positionHtml, text: positionText },
     },
+  }: {
+    section: {
+      content: {
+        html: string;
+        text: string;
+      };
+    };
   } = await client.request(getSection, {
     title: 'Position',
   });
 
   const {
     section: {
-      content: { html: description },
+      content: { html: descriptionHtml, text: descriptionText },
     },
+  }: {
+    section: {
+      content: {
+        html: string;
+        text: string;
+      };
+    };
   } = await client.request(getSection, {
     title: 'Description',
   });
 
   return {
     props: {
-      position,
-      description,
+      position: {
+        html: positionHtml,
+        text: positionText.replaceAll('\\n', ''),
+      },
+      description: {
+        html: descriptionHtml,
+        text: descriptionText.replaceAll('\\n', ''),
+      },
       projects,
     },
   };

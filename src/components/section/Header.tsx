@@ -2,9 +2,14 @@ import { HeadlineComponent } from '../common/Headline';
 import { TextComponent } from '../common/Text';
 import { LogoIcon } from '../icons/LogoIcon';
 
+type DetailedText = {
+  html: string;
+  text: string;
+};
+
 type HeaderProps = {
-  position: string;
-  description: string;
+  position: DetailedText;
+  description: DetailedText;
 };
 
 export function Header({ position, description }: HeaderProps) {
@@ -15,10 +20,16 @@ export function Header({ position, description }: HeaderProps) {
       </div>
       <HeadlineComponent weight={1}>Kevin Hirade</HeadlineComponent>
       <HeadlineComponent weight={2}>
-        <div dangerouslySetInnerHTML={{ __html: position }}></div>
+        <div
+          aria-label={position.text}
+          dangerouslySetInnerHTML={{ __html: position.html }}
+        ></div>
       </HeadlineComponent>
       <TextComponent asChild weight={2}>
-        <div dangerouslySetInnerHTML={{ __html: description }}></div>
+        <div
+          aria-label={description.text}
+          dangerouslySetInnerHTML={{ __html: description.html }}
+        ></div>
       </TextComponent>
     </header>
   );
