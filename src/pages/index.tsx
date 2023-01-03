@@ -33,7 +33,7 @@ const HomePage: NextPage = ({
   const hasBlogHeadlinePassed = useHasPassed(blogHeadline);
 
   return (
-    <div className="relative flex min-h-screen flex-col gap-16 overflow-hidden bg-zinc-900 p-8 text-white md:grid md:grid-cols-2 md:gap-8">
+    <div className="relative flex min-h-screen flex-col gap-16 overflow-hidden bg-zinc-900 p-4 text-white md:grid md:grid-cols-2 md:gap-8 md:p-8">
       <div className="absolute left-0 top-0 h-96 w-96 animate-spin-slow bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-sky-400 to-sky-200 opacity-25 blur-3xl md:fixed" />
       <div className="absolute right-32 top-36 h-96 w-96 animate-spin-slow bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-sky-400 to-sky-900 opacity-25 blur-3xl md:fixed" />
 

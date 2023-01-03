@@ -7,7 +7,7 @@ export function Navbar() {
     <nav className="flex w-full flex-row items-center justify-between gap-4">
       <Avatar src="https://avatars.githubusercontent.com/u/37001732?v=4" />
 
-      <ul className="flex flex-row space-x-6">
+      <ul className="flex flex-row space-x-2 md:space-x-6">
         <Link href={'/api/social/twitter'}>
           <li className="flex flex-row items-center gap-2 text-white">
             <TwitterLogo weight="fill" aria-hidden />
