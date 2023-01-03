@@ -9,14 +9,14 @@ export function Navbar() {
 
       <ul className="flex flex-row space-x-2 md:space-x-6">
         <Link href={'/api/social/twitter'}>
-          <li className="flex flex-row items-center gap-2 text-white">
+          <li className="flex flex-row items-center gap-2">
             <TwitterLogo weight="fill" aria-hidden />
             <span>Twitter</span>
             <ArrowSquareOut />
           </li>
         </Link>
         <Link href={'/api/social/github'}>
-          <li className="flex flex-row items-center gap-2 text-white">
+          <li className="flex flex-row items-center gap-2">
             <GithubLogo weight="fill" aria-hidden />
             <span>Github</span>
             <ArrowSquareOut />
