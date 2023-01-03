@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getSocialMediaQuery } from "../../../graphql/getSocialMedia";
 import { client } from "../../../lib/GraphQLClient";
 
 type SocialMediaInformation = {
@@ -13,16 +14,7 @@ type SocialMediaQueryResponse = {
 const socialMediaHandler = async (req: NextApiRequest, res: NextApiResponse<void>) => {
   const { name } = req.query;
 
-  const query = `
-    query getSocialMedia($name: String!){
-      socials(where: {socialMediaName: $name}) {
-        socialMediaUrl
-        socialMediaName
-      }
-    }
-  `;
-
-  const { socials }: SocialMediaQueryResponse = await client.request(query, { name });
+  const { socials }: SocialMediaQueryResponse = await client.request(getSocialMediaQuery, { name });
 
   if(socials.length == 0) {
     res.status(404).redirect("/");
