@@ -56,7 +56,7 @@ const HomePage: NextPage = ({
         <HeadlineComponent className="mb-8" id="projects" weight={3}>
           Projects
         </HeadlineComponent>
-        <ul className="flex flex-col gap-4">
+        <ul aria-label="Projects list" className="flex flex-col gap-4">
           {projects &&
             projects.map(({ title, description, tags: techStack }, index) => {
               return (
@@ -77,7 +77,7 @@ const HomePage: NextPage = ({
         >
           Posts
         </HeadlineComponent>
-        <ul className="flex flex-col gap-4">
+        <ul aria-label="Blog posts list" className="flex flex-col gap-4">
           {Array(5)
             .fill(0)
             .map((_, index) => {

@@ -11,8 +11,11 @@ type ProjectCardProps = {
 export function ProjectCard({ title, description, tags }: ProjectCardProps) {
   return (
     <Card asChild>
-      <li>
-        <ul className="flex flex-row flex-wrap gap-4 text-sm">
+      <li aria-label={`${title} project card`}>
+        <ul
+          aria-label={`Technologies used: ${tags.flatMap((tag) => tag)}`}
+          className="flex flex-row flex-wrap gap-4 text-sm"
+        >
           {tags.map((tag, index) => (
             <li key={index}>{tag}</li>
           ))}

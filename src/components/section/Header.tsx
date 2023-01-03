@@ -10,7 +10,7 @@ type HeaderProps = {
 export function Header({ position, description }: HeaderProps) {
   return (
     <header className="flex flex-col gap-4">
-      <div className="h-12 w-12">
+      <div aria-hidden className="h-12 w-12">
         <LogoIcon />
       </div>
       <HeadlineComponent weight={1}>Kevin Hirade</HeadlineComponent>

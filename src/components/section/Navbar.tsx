@@ -5,17 +5,23 @@ import Avatar from '../common/Avatar';
 export function Navbar() {
   return (
     <nav className="flex w-full flex-row items-center justify-between gap-4">
-      <Avatar src="https://avatars.githubusercontent.com/u/37001732?v=4" />
+      <Avatar
+        aria-hidden
+        src="https://avatars.githubusercontent.com/u/37001732?v=4"
+      />
 
-      <ul className="flex flex-row space-x-2 md:space-x-6">
-        <Link href={'/api/social/twitter'}>
+      <ul
+        aria-label="Social media links"
+        className="flex flex-row space-x-2 md:space-x-6"
+      >
+        <Link aria-label={`Go to Kevin's twitter`} href={'/api/social/twitter'}>
           <li className="flex flex-row items-center gap-2">
             <TwitterLogo weight="fill" aria-hidden />
             <span>Twitter</span>
             <ArrowSquareOut />
           </li>
         </Link>
-        <Link href={'/api/social/github'}>
+        <Link aria-label={`Go to Kevin's github`} href={'/api/social/github'}>
           <li className="flex flex-row items-center gap-2">
             <GithubLogo weight="fill" aria-hidden />
             <span>Github</span>

@@ -31,13 +31,15 @@ export function TableOfContent({ titles }: TableOfContentProps) {
   }, [titles]);
 
   return (
-    <ul className="flex flex-col gap-4">
+    <ul aria-label="Table of contents" className="flex flex-col gap-4">
       {tableTitles &&
         tableTitles.map(({ id, title, active }) => {
           return (
             <li key={id}>
               <TextComponent weight={active ? 1 : 2} asChild>
-                <Link href={`#${id}`}>{title}</Link>
+                <Link aria-label={`Go to ${title} section`} href={`#${id}`}>
+                  {title}
+                </Link>
               </TextComponent>
             </li>
           );
