@@ -46,14 +46,12 @@ const HomePage: NextPage = ({
       <div className="z-10 flex w-full flex-col justify-around gap-4 md:fixed md:h-[90vh] md:w-5/12">
         <Header position={position} description={description} />
 
-        <nav>
-          <TableOfContent
-            titles={[
-              { id: 'projects', title: 'Projects', hasPassed: true },
-              { id: 'posts', title: 'Posts', hasPassed: hasBlogHeadlinePassed },
-            ]}
-          />
-        </nav>
+        <TableOfContent
+          titles={[
+            { id: 'projects', title: 'Projects', hasPassed: true },
+            { id: 'posts', title: 'Posts', hasPassed: hasBlogHeadlinePassed },
+          ]}
+        />
 
         <Navbar />
       </div>
