@@ -53,7 +53,7 @@ const HomePage: NextPage = ({
       </div>
 
       <div className="z-10 col-start-2">
-        <HeadlineComponent className="mb-4" id="projects" weight={3}>
+        <HeadlineComponent className="mb-8" id="projects" weight={3}>
           Projects
         </HeadlineComponent>
         <ul className="flex flex-col gap-4">
@@ -70,7 +70,7 @@ const HomePage: NextPage = ({
             })}
         </ul>
         <HeadlineComponent
-          className="mt-8 mb-4"
+          className="mt-8 mb-8"
           id="posts"
           weight={3}
           ref={blogHeadline}
