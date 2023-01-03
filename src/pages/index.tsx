@@ -15,7 +15,6 @@ type Project = {
   description: string;
   tags: string[];
   githubLink?: string;
-  projectLink?: string;
 };
 
 type HomePageProps = {
@@ -64,7 +63,7 @@ const HomePage: NextPage = ({
           {projects &&
             projects.map(
               (
-                { title, description, tags, projectLink, githubLink },
+                { title, description, tags, githubLink },
                 index
               ) => {
                 return (
@@ -73,7 +72,6 @@ const HomePage: NextPage = ({
                     tags={tags}
                     title={title}
                     description={description}
-                    projectLink={projectLink}
                     githubLink={githubLink}
                   />
                 );
