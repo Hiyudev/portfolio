@@ -11,7 +11,7 @@ import {
 type HeadlineComponentProps = HTMLAttributes<HTMLHeadingElement> &
   RefAttributes<HTMLElement> & {
     asChild?: boolean;
-    children: ReactNode;
+    children?: ReactNode;
     weight: 1 | 2 | 3 | 4 | 5 | 6;
   };
 

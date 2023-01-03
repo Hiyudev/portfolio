@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 type TextComponentProps = {
   asChild?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   weight: 1 | 2;
 };
 
