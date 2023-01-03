@@ -10,11 +10,12 @@ type TextComponentProps = HTMLAttributes<HTMLElement> & {
 
 export function TextComponent({
   asChild,
+  className,
   children,
   weight,
   ...props
 }: TextComponentProps) {
-  const textClassnames = classNames({
+  const textClassnames = classNames(className, {
     'text-zinc-100': weight == 1,
     'text-zinc-400': weight == 2,
   });
