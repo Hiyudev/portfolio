@@ -26,7 +26,7 @@ export const HeadlineComponent = forwardRef(
       'font-black text-zinc-100',
       className,
       {
-        'text-6xl': weight == 1,
+        'text-4xl': weight == 1,
         'text-3xl': weight == 2,
         'text-2xl': weight == 3,
         'text-xl': weight == 4,
