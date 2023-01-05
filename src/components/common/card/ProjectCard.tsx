@@ -17,7 +17,11 @@ export function ProjectCard({
   githubLink,
 }: ProjectCardProps) {
   return (
-    <Link aria-label={`Go to ${title}'s github`} href={githubLink ?? '#'}>
+    <Link
+      className="rounded-md hover:ring-2 hover:ring-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-300"
+      aria-label={`Go to ${title}'s github`}
+      href={githubLink ?? '#'}
+    >
       <Card asChild>
         <li>
           <ul

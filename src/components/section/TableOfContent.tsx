@@ -36,7 +36,11 @@ export function TableOfContent({ titles }: TableOfContentProps) {
         tableTitles.map(({ id, title, active }) => {
           return (
             <li key={id}>
-              <TextComponent weight={active ? 1 : 2} asChild>
+              <TextComponent
+                className="transition-colors hover:text-zinc-100 active:text-zinc-100"
+                weight={active ? 1 : 2}
+                asChild
+              >
                 <Link aria-label={`Go to ${title} section`} href={`#${id}`}>
                   {title}
                 </Link>
