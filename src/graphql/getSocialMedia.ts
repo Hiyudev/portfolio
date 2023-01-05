@@ -1,8 +1,8 @@
 export const getSocialMediaQuery = `
-query getSocialMedia($name: String!){
-  socials(where: {socialMediaName: $name}) {
-    socialMediaUrl
-    socialMediaName
+query getSocials($name: String) {
+  socials(where: {name: $name}) {
+    name
+    url
   }
 }
 `;
