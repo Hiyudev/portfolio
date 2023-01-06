@@ -3,8 +3,8 @@ import { getSocialMediaQuery } from "../../../graphql/getSocialMedia";
 import { client } from "../../../lib/GraphQLClient";
 
 type SocialMediaInformation = {
-  socialMediaUrl: string;
-  socialMediaName: string;
+  url: string;
+  name: string;
 }
 
 type SocialMediaQueryResponse = {
@@ -21,7 +21,7 @@ const socialMediaHandler = async (req: NextApiRequest, res: NextApiResponse<void
     return;
   }
 
-  const url = socials[0].socialMediaUrl;
+  const url = socials[0].url;
 
   if (!url) {
     res.status(404).redirect("/");
