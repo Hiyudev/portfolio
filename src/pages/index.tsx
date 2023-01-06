@@ -29,6 +29,16 @@ const HomePage: NextPage = ({ projects, posts, sections }: HomePageProps) => {
     (section) => section.title == 'Description'
   )[0].content;
 
+  const titles = [
+    { id: 'projects', title: 'Projects', hasPassed: true },
+  ];
+
+  if (posts.length > 0) {
+    titles.push(
+      { id: 'posts', title: 'Posts', hasPassed: hasBlogHeadlinePassed },
+    );
+  }
+
   return (
     <div className="relative flex min-h-screen flex-col gap-16 overflow-hidden bg-zinc-900 p-4 text-white md:grid md:grid-cols-2 md:gap-8 md:p-8">
       <div className="absolute left-0 top-0 h-96 w-96 animate-spin-slow bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-sky-400 to-sky-200 opacity-25 blur-3xl md:fixed" />
@@ -41,10 +51,7 @@ const HomePage: NextPage = ({ projects, posts, sections }: HomePageProps) => {
         />
 
         <TableOfContent
-          titles={[
-            { id: 'projects', title: 'Projects', hasPassed: true },
-            { id: 'posts', title: 'Posts', hasPassed: hasBlogHeadlinePassed },
-          ]}
+          titles={titles}
         />
 
         <Navbar />
